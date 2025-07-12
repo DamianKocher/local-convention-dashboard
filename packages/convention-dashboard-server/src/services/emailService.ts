@@ -15,6 +15,11 @@ export class EmailService {
     }
 
     async sendVerificationEmail(email: string, code: string) {
+        if (!this.sendgridToken) {
+            logger.warn(`sendgrid token is not set.`);
+            return;
+        }
+
         sendgrid.setApiKey(this.sendgridToken)
 
         await sendgrid.send({
