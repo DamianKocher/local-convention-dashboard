@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es2019", // Or a newer version like "es2022" depending on your target environment
+    "module": "commonjs", // Or "esnext" for ES Modules
+    "lib": ["es2019", "dom"], // Or a newer version like "es2022" and "dom" if applicable
+    "declaration": true, // Essential for generating .d.ts files for type definitions
+    "declarationMap": true, // Optional: generates source maps for declaration files
+    "outDir": "./lib", // Output directory for compiled JavaScript and declaration files
+    "rootDir": "./src", // Root directory of your source code
+    "strict": true, // Enables a set of strict type-checking options for better type safety
+    "esModuleInterop": true, // Enables compatibility for importing CommonJS modules
+    "skipLibCheck": true, // Optional: Skips type checking of declaration files
+    "forceConsistentCasingInFileNames": true, // Ensures consistent file casing
+    "moduleResolution": "node" // Specifies how modules are resolved
+  },
+  "include": ["src/**/*.ts"], // Files to include in the compilation process
+  "exclude": ["node_modules", "src/**/*.spec.ts", "src/**/*.test.ts"] // Files/directories to exclude
+}

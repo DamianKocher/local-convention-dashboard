@@ -1,0 +1,30 @@
+{
+  "name": "convention-dashboard-server",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx --watch --env-file=.env_local ./src/server.ts"
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^8.1.5",
+    "convention-dashboard-shared": "file:../convention-dashboard-shared",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "nanoid": "^5.1.5",
+    "pg": "^8.16.3",
+    "pino": "^9.7.0",
+    "zod": "^3.25.75"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/pg": "^8.15.4",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}

@@ -1,0 +1,103 @@
+:root {
+  --dsa-red: #EC1F27;
+  --dsa-red-tint-1: #F04C53;
+  --dsa-red-tint-2: #F4797E;
+  --dsa-red-tint-3: #F7A5A9;
+  --dsa-red-tint-4: #FBD2D4;
+
+  --dsa-black: #231F20;
+  --dsa-black-tint-1: #3B3838;
+  --dsa-black-tint-2: #605C5C;
+  --dsa-black-tint-3: #8C8989;
+  --dsa-black-tint-4: #C1C0BF;
+
+  --gray: #F3F3F3;
+
+  --dsa-white: #FFFFFF;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi: 600;
+  --font-weight-bold: 700;
+
+  --font-size-large: 20pt;
+  --font-size-medium: 15pt;
+  --font-size-small: 12pt;
+
+  --padding-tiny: 4px;
+  --padding-small: 8px;
+  --padding-medium: 16px;
+  --padding-large: 32px;
+
+  --border-radius: 5px;
+}
+
+@font-face {
+  font-family: 'manifold';
+  src: url("./assets/fonts/ManifoldDSA-Regular.woff2") format("woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'manifold';
+  src: url("./assets/fonts/ManifoldDSA-Medium.woff2") format("woff2");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'manifold';
+  src: url("./assets/fonts/ManifoldDSA-DemiBold.woff2") format("woff2");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'manifold';
+  src: url("./assets/fonts/ManifoldDSA-Bold.woff2") format("woff2");
+  font-weight: 700;
+}
+
+body {
+  font-family: 'manifold', sans-serif;
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-small);
+
+  color: var(--dsa-black);
+  background-color: var(--gray);
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-large);
+
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-medium);
+
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+#wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+#root {
+  width: 900px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  padding: 0 var(--padding-medium);
+}

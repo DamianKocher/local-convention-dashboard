@@ -1,0 +1,21 @@
+{
+  "name": "convention-dashboard-shared",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "peerDependencies": {
+    "zod": "^3.25.75"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}

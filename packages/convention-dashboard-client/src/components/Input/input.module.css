@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--padding-tiny);
+}
+
+.input {
+    border-radius: var(--border-radius);
+    border-width: 0;
+
+    padding: var(--padding-small);
+    font-family: 'manifold', sans-serif;
+    font-weight: var(--font-weight-medium) !important;
+    font-size: var(--font-size-small);
+
+    color: var(--dsa-black);
+    background-color: var(--dsa-black-tint-4);
+}
+
+.input:focus {
+    outline: none;
+}

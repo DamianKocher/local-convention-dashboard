@@ -1,0 +1,25 @@
+.button {
+    display: block;
+
+    color: var(--dsa-white);
+    background-color: var(--dsa-red);
+    font-family: 'manifold', sans-serif;
+
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-small);
+
+    border: none;
+
+    padding: 5px 10px;
+    border-radius: var(--border-radius);
+}
+
+.button:hover {
+    background-color: var(--dsa-red-tint-1);
+    cursor: pointer;
+}
+
+.button:disabled {
+    background-color: var(--dsa-red-tint-2);
+    cursor: unset;
+}
