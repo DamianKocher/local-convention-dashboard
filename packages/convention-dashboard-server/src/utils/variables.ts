@@ -6,4 +6,3 @@ export const VERIFICATION_SENDER_EMAIL = process.env.LC_VERIFICATION_SENDER_EMAI
 export const VERIFICATION_SENDER_NAME = process.env.LC_VERIFICATION_SENDER_NAME ?? 'STL DSA Membership Verification';
 
 export const SENDGRID_TOKEN = process.env.LC_SENDGRID_TOKEN ?? '';
-
