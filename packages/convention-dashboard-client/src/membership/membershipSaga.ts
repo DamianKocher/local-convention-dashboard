@@ -1,6 +1,13 @@
 import {createSaga} from "../utils/saga.ts";
 import {put, select, takeLatest} from "typed-redux-saga";
-import {getLoginState, LoginStage, setError, setLoginStage, setMembershipToken} from "./membershipSlice.ts";
+import {
+    getLoginState, incrementCodeFailedAttempts,
+    LoginStage,
+    resetCodeFailedAttempts,
+    setError,
+    setLoginStage,
+    setMembershipToken
+} from "./membershipSlice.ts";
 import {completeMembershipVerification, startMembershipVerification} from "./membershipApi.ts";
 import {stashToken} from "../utils/tokenStore.ts";
 import {goToDocumentsView} from "../document/documentSaga.ts";
@@ -12,6 +19,7 @@ export const {a: submitEmail, s: submitEmailSaga} = createSaga('membership/submi
         const {email} = yield* select(getLoginState);
         yield* startMembershipVerification(email);
 
+        yield* put(resetCodeFailedAttempts())
         yield* put(setLoginStage(LoginStage.CODE));
     } catch (error) {
         console.error('error', error);
@@ -32,8 +40,8 @@ export const {a: submitCode, s: submitCodeSaga} = createSaga('membership/submitC
         yield* put(goToDocumentsView())
     } catch (error) {
         console.error('error', error);
-        yield* put(setError('Failed to complete membership verification.'))
-        yield* put(setLoginStage(LoginStage.ERROR));
+        yield* put(incrementCodeFailedAttempts());
+        yield* put(setLoginStage(LoginStage.CODE));
     }
 });
 

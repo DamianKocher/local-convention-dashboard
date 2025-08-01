@@ -3,9 +3,10 @@ import {Button} from "../../components/Button/Button.tsx";
 import {useAppSelector} from "../../store/store.ts";
 import {getLoginState, LoginStage, resetLoginState, setCode, setEmail} from "../../membership/membershipSlice.ts";
 import {submitCode, submitEmail} from "../../membership/membershipSaga.ts";
+import classes from "./LoginView.module.css";
 
 export const LoginStages = () => {
-    const {stage, email, isEmailValid, isCodeValid, error} = useAppSelector(getLoginState);
+    const {stage, email, isEmailValid, isCodeValid, error, failedCodeAttempts} = useAppSelector(getLoginState);
 
     switch (stage) {
         case LoginStage.EMAIL:
@@ -32,10 +33,16 @@ export const LoginStages = () => {
 
                     <p>Verification email was sent to: {email}</p>
 
+                    {failedCodeAttempts > 0 && <p>Failed code verification attempts: {failedCodeAttempts}</p>}
+
                     <Input label="Code" onChange={setCode} type="text" placeholder="xxx-xxx" maxLength={7}
                            autocomplete="one-time-code"/>
 
-                    <Button label="Verify Code" disabled={!isCodeValid} onClick={submitCode}/>
+                    <div className={classes.buttons}>
+                        <Button label="Restart" disabled={false} onClick={resetLoginState}/>
+                        <Button label="Verify Code" disabled={!isCodeValid} onClick={submitCode}/>
+                    </div>
+
                 </>
             );
         case LoginStage.ERROR:
@@ -50,7 +57,7 @@ export const LoginStages = () => {
             );
         case LoginStage.LOADING:
             return (
-                <p>TODO: loading screen...</p>
+                <p>Loading...</p>
             )
     }
 }

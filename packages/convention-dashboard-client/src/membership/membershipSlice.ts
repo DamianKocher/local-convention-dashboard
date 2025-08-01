@@ -16,6 +16,7 @@ type MembershipState = {
         error: string;
         email: string;
         code: string;
+        failedCodeAttempts: number;
     },
 
     token: string | null;
@@ -29,6 +30,7 @@ const initialState: MembershipState = {
         email: '',
         code: '',
         error: '',
+        failedCodeAttempts: 0
     },
 
     token: null,
@@ -59,6 +61,13 @@ export const membershipSlice = createSlice({
         setError: (state, {payload}: PayloadAction<string>) => {
             state.login.error = payload;
         },
+        resetCodeFailedAttempts: (state) => {
+            state.login.failedCodeAttempts = 0;
+        },
+        incrementCodeFailedAttempts: (state) => {
+            state.login.failedCodeAttempts += 1;
+        },
+
 
         setMembershipToken: (state, {payload}: PayloadAction<string | null>) => {
             if (payload) {
@@ -89,16 +98,26 @@ export const membershipSlice = createSlice({
                     code: login.code,
                     isCodeValid: isCodeValid,
                     error: login.error,
+                    failedCodeAttempts: login.failedCodeAttempts
                 }
             }),
 
         getMembershipToken: (state) => state.token,
         getShortName: (state) => state.shortName,
-        getFullName: (state) => state.fullName
+        getFullName: (state) => state.fullName,
     }
 });
 
-export const {resetLoginState, setLoginStage, setEmail, setCode, setError, setMembershipToken} = membershipSlice.actions;
+export const {
+    resetLoginState,
+    setLoginStage,
+    setEmail,
+    setCode,
+    setError,
+    setMembershipToken,
+    resetCodeFailedAttempts,
+    incrementCodeFailedAttempts
+} = membershipSlice.actions;
 
 export const {
     getLoginState,
