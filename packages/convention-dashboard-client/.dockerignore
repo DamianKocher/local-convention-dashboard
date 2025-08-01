@@ -1,0 +1,8 @@
+/dist
+/node_modules
+
+.dockerignore
+Dockerfile
+
+/packages/convention-dashboard-client/node_modules
+/packages/convention-dashboard-client/dist
