@@ -26,7 +26,7 @@ export const FormsView = () => {
 
                 <p>
                     <a href="https://link.stldsa.org/convention_standing_rules" target="_blank">
-                        Standing Rules - 2025 STL DSA Local Convention
+                        Standing Rules of the 2025 St. Louis DSA Local Convention
                     </a>
                 </p>
             </div>
