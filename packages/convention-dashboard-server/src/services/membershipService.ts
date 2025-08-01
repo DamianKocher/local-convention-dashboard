@@ -40,7 +40,7 @@ export class MembershipService {
         logger.info(`found member: ${member.full_name} (${member.email})`, {member});
 
         // nullify all previous verification codes for email
-        await this.codesService.nullifyPreviousCodes(member.email);
+        await this.codesService.nullifyPreviousCodesForgiving(member.email);
 
         const verificationCode = this.codesService.generateVerificationCode();
         await this.codesService.insertVerificationCode(member.id, member.email, verificationCode);

@@ -4,7 +4,7 @@ import {logger} from "../utils/logger.ts";
 
 export class CodesService {
 
-    private static idGenerator = customAlphabet('0123456789abcdefghijklmnopqrstuvwxyz');
+    private static idGenerator = customAlphabet('0123456789');
 
     private db: Client;
 
@@ -16,6 +16,12 @@ export class CodesService {
         const part1 = CodesService.idGenerator(3);
         const part2 = CodesService.idGenerator(3);
         return `${part1}-${part2}`;
+    }
+
+    async nullifyPreviousCodesForgiving(email: string) {
+        const query = 'UPDATE verifications SET is_nullified = true WHERE email = $1 AND timestamp < NOW() - INTERVAL \'5 minute\'';
+        await this.db.query(query, [email]);
+        logger.info(`nullified previous verification codes for email: ${email}`);
     }
 
     async nullifyPreviousCodes(email: string) {
