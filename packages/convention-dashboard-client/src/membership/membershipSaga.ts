@@ -10,7 +10,7 @@ import {
 } from "./membershipSlice.ts";
 import {completeMembershipVerification, startMembershipVerification} from "./membershipApi.ts";
 import {stashToken} from "../utils/tokenStore.ts";
-import {goToDocumentsView} from "../document/documentSaga.ts";
+import {goToFormsViewAction} from "../forms/formsSaga.ts";
 
 export const {a: submitEmail, s: submitEmailSaga} = createSaga('membership/submitEmail', function* () {
     try {
@@ -37,7 +37,7 @@ export const {a: submitCode, s: submitCodeSaga} = createSaga('membership/submitC
         yield* put(setMembershipToken(token));
         stashToken(token);
 
-        yield* put(goToDocumentsView())
+        yield* put(goToFormsViewAction())
     } catch (error) {
         console.error('error', error);
         yield* put(incrementCodeFailedAttempts());
