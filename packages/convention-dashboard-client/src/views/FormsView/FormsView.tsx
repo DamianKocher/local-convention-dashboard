@@ -14,11 +14,21 @@ export const FormsView = () => {
             <AppBar homeButton={false}/>
 
             <div className={classes.header}>
+                <h1></h1>
+            </div>
+
+            <div className={classes.header}>
                 <h1>Submit a questionnaire or resolution:</h1>
 
                 <FormCard formType={FormType.EC}/>
                 <FormCard formType={FormType.FORMATION}/>
                 <FormCard formType={FormType.RESOLUTION}/>
+
+                <p>
+                    <a href="https://link.stldsa.org/convention_standing_rules" target="_blank">
+                        Standing Rules - 2025 STL DSA Local Convention
+                    </a>
+                </p>
             </div>
 
             {forms.length > 0 && (
