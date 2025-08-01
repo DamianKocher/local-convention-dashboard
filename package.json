@@ -9,7 +9,8 @@
   "scripts": {
     "dev:client": "npm run dev -w convention-dashboard-client",
     "dev:server": "npm run dev -w convention-dashboard-server",
-    "build:client": "npm run build -w convention-dashboard-client"
+    "build:client": "npm run build -w convention-dashboard-client",
+    "start:server": "npm run start -w convention-dashboard-server"
   },
   "workspaces": [
     "packages/*"
