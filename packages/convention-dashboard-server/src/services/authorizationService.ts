@@ -54,4 +54,8 @@ export class AuthorizationService {
     getMemberId(req: any) {
         return z.int().parse(req[AuthorizationService.REQ_MEMBER_ID])
     }
+
+    getMemberFullName(req: any) {
+        return z.string().parse(req[AuthorizationService.REQ_FULL_NAME]);
+    }
 }

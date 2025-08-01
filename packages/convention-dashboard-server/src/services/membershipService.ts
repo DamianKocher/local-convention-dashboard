@@ -1,7 +1,7 @@
 import {Client} from "pg";
 import * as z from "zod/v4";
 import jwt from "jsonwebtoken";
-import {CompleteVerificationResponseSchema, CompleteVerificationResponse} from "convention-dashboard-shared/src";
+import {completeVerificationResponseSchema, CompleteVerificationResponse} from "convention-dashboard-shared/src";
 import {logger} from "../utils/logger.ts";
 import {CodesService} from "./codesService.ts";
 import {EmailService} from "./emailService.ts";
@@ -61,7 +61,7 @@ export class MembershipService {
 
         const token = this.authorizationService.createJwt(member);
 
-        return CompleteVerificationResponseSchema.parse({
+        return completeVerificationResponseSchema.parse({
             shortName: member.short_name,
             fullName: member.full_name,
             token: token

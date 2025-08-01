@@ -3,13 +3,13 @@ import {put, takeLatest} from "typed-redux-saga";
 import {clearToken, loadToken} from "../utils/tokenStore.ts";
 import {resetLoginState, setMembershipToken} from "../membership/membershipSlice.ts";
 import {setView, View} from "./appSlice.ts";
-import {goToDocumentsView} from "../document/documentSaga.ts";
+import {goToFormsViewAction} from "../forms/formsSaga.ts";
 
 export const {a: initializeApp, s: initializeAppSaga} = createSaga('app/initialize', function* () {
     const token = loadToken();
     if (token) {
         yield* put(setMembershipToken(token));
-        yield* put(goToDocumentsView());
+        yield* put(goToFormsViewAction());
     } else {
         yield* put(setView(View.LOGIN));
     }

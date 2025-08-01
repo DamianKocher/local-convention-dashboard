@@ -9,9 +9,9 @@ export const completeVerificationRequestSchema = z.object({
     code: z.string()
 });
 
-export const CompleteVerificationResponseSchema = z.object({
+export const completeVerificationResponseSchema = z.object({
     shortName: z.string(),
     fullName: z.string(),
     token: z.string(),
 });
-export type CompleteVerificationResponse = z.infer<typeof CompleteVerificationResponseSchema>;
+export type CompleteVerificationResponse = z.infer<typeof completeVerificationResponseSchema>;

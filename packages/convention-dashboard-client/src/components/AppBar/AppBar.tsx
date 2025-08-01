@@ -1,9 +1,9 @@
 import classes from './AppBar.module.css'
 import logo from '../../assets/logo.png';
 import {useDispatch, useSelector} from "react-redux";
-import {goToDocumentsView} from "../../document/documentSaga.ts";
 import {getFullName} from "../../membership/membershipSlice.ts";
 import {logout} from "../../app/appSaga.ts";
+import {goToFormsViewAction} from "../../forms/formsSaga.ts";
 
 type Props = {
     homeButton: boolean;
@@ -15,7 +15,7 @@ export const AppBar = ({homeButton}: Props) => {
 
     function goToDocuments() {
         if (homeButton) {
-            dispatch(goToDocumentsView());
+            dispatch(goToFormsViewAction());
         }
     }
 

@@ -8,11 +8,14 @@ import {useSelector} from "react-redux";
 import {takeEvery} from "typed-redux-saga";
 import {watchMembershipSaga} from "../membership/membershipSaga.ts";
 import {watchDocumentSaga} from "../document/documentSaga.ts";
+import {watchFormsSaga} from "../forms/formsSaga.ts";
+import {formSlice} from "../forms/formSlice.ts";
 
 const rootReducer = combineSlices(
     appSlice,
     documentSlice,
-    membershipSlice
+    membershipSlice,
+    formSlice
 );
 
 function* watchLoggingSaga() {
@@ -37,6 +40,7 @@ export function setupStore() {
     sagaMiddleware.run(watchAppSaga);
     sagaMiddleware.run(watchDocumentSaga);
     sagaMiddleware.run(watchMembershipSaga);
+    sagaMiddleware.run(watchFormsSaga);
 
     return store;
 }

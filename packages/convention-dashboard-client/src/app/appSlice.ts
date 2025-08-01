@@ -5,7 +5,9 @@ export const enum View {
     INITIAL,
     LOGIN,
     DOCUMENTS,
-    DOCUMENT
+    DOCUMENT,
+    FORMS,
+    FORM
 }
 
 type AppState = {

@@ -3,6 +3,8 @@ import {getView, View} from "./app/appSlice.ts";
 import {LoginView} from "./views/LoginView/LoginView.tsx";
 import {DocumentsView} from "./views/DocumentsView/DocumentsView.tsx";
 import {DocumentView} from "./views/DocumentView/DocumentView.tsx";
+import {FormsView} from "./views/FormsView/FormsView.tsx";
+import {FormView} from "./views/FormView/FormView.tsx";
 
 export const App = () => {
     const view = useAppSelector(getView);
@@ -16,5 +18,9 @@ export const App = () => {
             return <DocumentsView />;
         case View.DOCUMENT:
             return <DocumentView />;
+        case View.FORMS:
+            return <FormsView />;
+        case View.FORM:
+            return <FormView />
     }
 };

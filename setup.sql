@@ -34,6 +34,13 @@ CREATE TABLE signatures (
     UNIQUE(member_id, document_id)
 );
 
+CREATE TABLE forms (
+    id SERIAL PRIMARY KEY,
+    member_id INTEGER NOT NULL REFERENCES members(id),
+    type TEXT NOT NULL,
+    link TEXT NOT NULL
+);
+
 CREATE INDEX idx_verifications_email ON verifications(email);
 CREATE INDEX idx_signatures_member_id ON signatures(member_id);
 CREATE INDEX idx_signatures_document_id ON signatures(document_id);

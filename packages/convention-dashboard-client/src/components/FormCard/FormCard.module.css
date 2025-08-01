@@ -1,0 +1,11 @@
+.container {
+    background-color: var(--dsa-white);
+    outline: var(--dsa-black) solid 1px;
+    padding: var(--padding-small);
+
+    display: flex;
+    gap: var(--padding-medium);
+
+    cursor: pointer;
+    user-select: none;
+}

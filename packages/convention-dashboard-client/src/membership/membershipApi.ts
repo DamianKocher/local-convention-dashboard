@@ -1,5 +1,5 @@
 import {request} from "../utils/request.ts";
-import {CompleteVerificationResponseSchema} from "convention-dashboard-shared/src";
+import {completeVerificationResponseSchema} from "convention-dashboard-shared/src";
 import {z} from "zod/v4";
 
 export function startMembershipVerification(email: string) {
@@ -18,6 +18,6 @@ export function completeMembershipVerification(email: string, code: string) {
         method: 'POST',
         authenticated: true,
         query: {email, code},
-        responseSchema: CompleteVerificationResponseSchema
+        responseSchema: completeVerificationResponseSchema
     });
 }

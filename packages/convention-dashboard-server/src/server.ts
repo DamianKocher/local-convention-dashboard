@@ -4,6 +4,7 @@ import {createDocumentsRouter} from "./routers/documentsRouter.ts";
 import {Client, Pool} from 'pg'
 import {logger} from "./utils/logger.ts";
 import {PORT} from "./utils/variables.ts";
+import {createFormRouter} from "./routers/formRouter.ts";
 
 (async () => {
     const app = express();
@@ -17,6 +18,9 @@ import {PORT} from "./utils/variables.ts";
 
     const documentsRouter = createDocumentsRouter(db);
     app.use('/api/documents', documentsRouter);
+
+    const formsRouter = createFormRouter(db);
+    app.use('/api/forms', formsRouter);
 
     app.use((err: any, req: Request, res: Response, next: NextFunction) => {
         const path = req.path;
