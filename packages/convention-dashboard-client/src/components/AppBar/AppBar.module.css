@@ -1,10 +1,16 @@
+.container {
+    padding-top: var(--padding-medium);
+    padding-bottom: var(--padding-large);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-medium);
+}
+
 .navbar {
     display: flex;
     align-items: center;
     gap: var(--padding-small);
-
-    padding-top: var(--padding-medium);
-    padding-bottom: var(--padding-large);
 
     user-select: none;
     -webkit-user-select: none;

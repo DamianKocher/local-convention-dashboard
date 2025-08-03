@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getFullName} from "../../membership/membershipSlice.ts";
 import {logout} from "../../app/appSaga.ts";
 import {goToFormsViewAction} from "../../forms/formsSaga.ts";
+import {Button} from "../Button/Button.tsx";
 
 type Props = {
     homeButton: boolean;
@@ -13,7 +14,7 @@ export const AppBar = ({homeButton}: Props) => {
     const fullName = useSelector(getFullName);
     const dispatch = useDispatch();
 
-    function goToDocuments() {
+    function goToHome() {
         if (homeButton) {
             dispatch(goToFormsViewAction());
         }
@@ -24,20 +25,24 @@ export const AppBar = ({homeButton}: Props) => {
     }
 
     return (
-        <div className={classes.navbar}>
-            <img src={logo} alt="DSA Logo" className={classes.logo} onClick={goToDocuments}
-                 style={{cursor: homeButton ? 'pointer' : ''}}/>
-            <div>
-                <p>STL DSA</p>
-                <p>Local Convention Dashboard</p>
+        <div className={classes.container}>
+            <div className={classes.navbar}>
+                <img src={logo} alt="DSA Logo" className={classes.logo} onClick={goToHome}
+                     style={{cursor: homeButton ? 'pointer' : ''}}/>
+                <div>
+                    <p>STL DSA</p>
+                    <p>Local Convention Dashboard</p>
+                </div>
+
+                {fullName && <div className={classes.user}>
+                    <p className={classes.name}>{fullName}</p>
+                    <p>
+                        <span className={classes.signout} onClick={signout}>Signout</span>
+                    </p>
+                </div>}
             </div>
 
-            {fullName && <div className={classes.user}>
-                <p className={classes.name}>{fullName}</p>
-                <p>
-                    <span className={classes.signout} onClick={signout}>Signout</span>
-                </p>
-            </div>}
+            {homeButton && <div><Button label="Back" disabled={false} onClick={goToFormsViewAction}/></div>}
         </div>
     )
 }
