@@ -30,6 +30,7 @@ export class MembershipService {
     }
 
     async startMembershipVerification(email: string) {
+        email = email.trim().toLowerCase();
         logger.info(`starting membership verification for email: ${email}`);
 
         const member = await this.getMemberByEmail(email);
@@ -50,6 +51,7 @@ export class MembershipService {
     }
 
     async completeMembershipVerification(email: string, verificationCode: string): Promise<CompleteVerificationResponse> {
+        email = email.trim().toLowerCase();
         logger.info(`completing membership verification for email: ${email}`)
         await this.codesService.validateCode(email, verificationCode);
 
