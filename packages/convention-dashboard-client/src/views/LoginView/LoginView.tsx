@@ -6,7 +6,7 @@ import {Footer} from "../../components/Footer/Footer.tsx";
 export const LoginView = () => {
     return (
         <>
-            <AppBar homeButton={false}/>
+            <AppBar/>
 
             <div className={classes.panel}>
                 <h1>Member Sign In</h1>
