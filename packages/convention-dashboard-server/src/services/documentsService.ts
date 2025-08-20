@@ -108,7 +108,6 @@ export class DocumentsService {
     async signDocument(id: number, memberId: number) {
         const query = 'INSERT INTO signatures (document_id, member_id) VALUES ($1, $2)';
         await this.client.query(query, [id, memberId]);
-
     }
 
     async unsignDocument(id: number, memberId: number) {

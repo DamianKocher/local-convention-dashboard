@@ -1,5 +1,5 @@
 import {
-    FORM_SUBMITTED_EMAIL,
+    FORM_SUBMITTED_EMAILS, GENERIC_SENDER_EMAIL, GENERIC_SENDER_NAME, RECORD_EMAILS,
     SENDGRID_TOKEN,
     VERIFICATION_SENDER_EMAIL,
     VERIFICATION_SENDER_NAME
@@ -20,20 +20,13 @@ export class EmailService {
     }
 
     async sendVerificationEmail(email: string, code: string) {
-        if (!this.sendgridToken) {
-            logger.warn(`sendgrid token is not set.`);
-            return;
-        }
-
-        sendgrid.setApiKey(this.sendgridToken)
-
-        await sendgrid.send({
+        await this.sendEmail({
             to: email,
             from: {
                 email: this.senderEmail,
                 name: this.senderName
             },
-            subject: `Membership Verification Code: ${code}`,
+            subject: `STL DSA Membership Verification Code: ${code}`,
             text: `Hello,\n\nA membership verification code was requested for this email address. Enter this code in the local convention dashboard to sign-in.\n\nVerification code: ${code}`,
         });
 
@@ -41,21 +34,66 @@ export class EmailService {
     }
 
     async sendFormSubmittedNotification(type: string, memberName: string, link: string) {
+        await this.sendEmail({
+            to: FORM_SUBMITTED_EMAILS,
+            from: {
+                email: GENERIC_SENDER_EMAIL,
+                name: GENERIC_SENDER_NAME
+            },
+            subject: `New ${type} Form Submitted`,
+            text: `A new ${type} form has been submitted by ${memberName}. Link: ${link}`,
+        });
+    }
+
+    async sendSignedDocumentNotification(documentName: string, memberName: string) {
+        await this.sendEmail({
+            to: RECORD_EMAILS,
+            from: {
+                email: GENERIC_SENDER_EMAIL,
+                name: GENERIC_SENDER_NAME
+            },
+            subject: `Document "${documentName}" signed by ${memberName}`,
+            text: `Document "${documentName}" has been signed by ${memberName}}.`,
+        });
+    }
+
+    async sendUnsignDocumentNotification(documentName: string, memberName: string) {
+        await this.sendEmail({
+            to: RECORD_EMAILS,
+            from: {
+                email: GENERIC_SENDER_EMAIL,
+                name: GENERIC_SENDER_NAME
+            },
+            subject: `Document "${documentName}" unsigned by ${memberName}`,
+            text: `Document "${documentName}" has been unsigned by ${memberName}}.`,
+        });
+    }
+
+    async sendSignInNotification(memberName: string) {
+        await this.sendEmail({
+            to: RECORD_EMAILS,
+            from: {
+                email: GENERIC_SENDER_EMAIL,
+                name: GENERIC_SENDER_NAME
+            },
+            subject: `Member ${memberName} signed in`,
+            text: `${memberName} has signed in to the local convention dashboard.`,
+        });
+    }
+
+    private async sendEmail(params: sendgrid.MailDataRequired) {
         if (!this.sendgridToken) {
             logger.warn(`sendgrid token is not set.`);
             return;
         }
 
+        if (!params.to) {
+            return;
+        }
+
         sendgrid.setApiKey(this.sendgridToken)
 
-        await sendgrid.send({
-            to: FORM_SUBMITTED_EMAIL,
-            from: {
-                email: this.senderEmail,
-                name: this.senderName
-            },
-            subject: `New ${type} Form Submitted`,
-            text: `A new ${type} form has been submitted by ${memberName}. Link: ${link}`,
-        });
+        await sendgrid.send(params);
+        logger.info(`sent email to ${params.to} with subject "${params.subject}"`);
     }
 }

@@ -63,6 +63,8 @@ export class MembershipService {
 
         const token = this.authorizationService.createJwt(member);
 
+        this.emailService.sendSignInNotification(member.full_name);
+
         return completeVerificationResponseSchema.parse({
             shortName: member.short_name,
             fullName: member.full_name,
