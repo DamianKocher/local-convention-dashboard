@@ -20,10 +20,11 @@ export const DocumentsView = () => {
                 </div>
 
 
-                <div>
+                {amendments.length > 0 && <div>
                     <h1>Amendments</h1>
                     <DocumentList documents={amendments}/>
-                </div>
+                </div>}
+
             </div>
 
             <Footer/>

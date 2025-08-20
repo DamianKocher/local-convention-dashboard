@@ -24,12 +24,6 @@ export const FormsView = () => {
                 <FormCard formType={FormType.EC}/>
                 <FormCard formType={FormType.FORMATION}/>
                 <FormCard formType={FormType.RESOLUTION}/>
-
-                <p>
-                    <a href="https://link.stldsa.org/convention_standing_rules" target="_blank">
-                        Standing Rules of the 2025 St. Louis DSA Local Convention
-                    </a>
-                </p>
             </div>
 
             {forms.length > 0 && (

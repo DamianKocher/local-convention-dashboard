@@ -1,5 +1,10 @@
-.cards {
+.content {
     display: flex;
     flex-direction: column;
     gap: var(--padding-small)
+}
+
+.label {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-large);
 }

@@ -44,23 +44,27 @@ export const DocumentView = () => {
                     <p>{document.description}</p>
                 </div>
 
-                <div>
-                    <h2>Authors</h2>
-                    <p>{document.coauthors.join(', ')}</p>
-                </div>
+                <div className={classes.table}>
+                    <div>
+                        <h2>Authors</h2>
+                        <p>{document.coauthors.join(', ')}</p>
+                    </div>
 
-                <div>
-                    <h2>Signatures</h2>
+                    <div>
+                        <h2>Signatures</h2>
 
-                    <p>{document.signatures.count.current} / {document.signatures.count.required}</p>
+                        <p>{document.signatures.count.current} / {document.signatures.count.required}</p>
 
-                    <ul>
-                        {signaturesIncludingUser.map((signature) => <li key={signature.sig}>{signature.sig}</li>)}
-                    </ul>
+                        <ul>
+                            {signaturesIncludingUser.map((signature) => <li
+                                key={signature.sig}>{signature.sig}</li>)}
+                        </ul>
 
-                    {document.signatures.signed ?
-                        <Button label="Remove My Signature" disabled={false} onClick={unsignSelectedDocument}/> :
-                        <Button label="Add My Signature" disabled={false} onClick={signSelectedDocument}/>}
+                        {document.signatures.signed ?
+                            <Button label="Remove My Signature" disabled={false} onClick={unsignSelectedDocument}/> :
+                            <Button label="Add My Signature" disabled={false} onClick={signSelectedDocument}/>}
+
+                    </div>
 
                 </div>
 
@@ -69,9 +73,7 @@ export const DocumentView = () => {
                     <DocumentList documents={related}/>
                 </div>}
 
-
                 {markdown && <div className={classes.section}>
-                    <h2>Document</h2>
                     <div className={classes.content}>
                         <Markdown>{markdown}</Markdown>
                     </div>
