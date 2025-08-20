@@ -53,7 +53,7 @@ export class EmailService {
                 name: GENERIC_SENDER_NAME
             },
             subject: `Document "${documentName}" signed by ${memberName}`,
-            text: `Document "${documentName}" has been signed by ${memberName}}.`,
+            text: `Document "${documentName}" has been signed by ${memberName}.`,
         });
     }
 
@@ -65,7 +65,7 @@ export class EmailService {
                 name: GENERIC_SENDER_NAME
             },
             subject: `Document "${documentName}" unsigned by ${memberName}`,
-            text: `Document "${documentName}" has been unsigned by ${memberName}}.`,
+            text: `Document "${documentName}" has been unsigned by ${memberName}.`,
         });
     }
 
