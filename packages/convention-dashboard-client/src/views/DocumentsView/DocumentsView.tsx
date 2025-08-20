@@ -4,13 +4,14 @@ import {getDocumentsByType} from "../../document/documentSlice.ts";
 import classes from "./DocumentsView.module.css";
 import {AppBar} from "../../components/AppBar/AppBar.tsx";
 import {Footer} from "../../components/Footer/Footer.tsx";
+import {goToMenu} from "../../app/appSaga.ts";
 
 export const DocumentsView = () => {
     const {resolutions, amendments} = useSelector(getDocumentsByType);
 
     return (
         <>
-            <AppBar homeButton={true}/>
+            <AppBar backAction={goToMenu}/>
 
             <div className={classes.container}>
                 <div>

@@ -1,0 +1,35 @@
+import type {Questionnaire} from "convention-dashboard-shared/src";
+import classes from "./QuestionnaireCard.module.css";
+
+type Props = {
+    questionnaire: Questionnaire
+}
+
+export const QuestionnaireCard = ({questionnaire}: Props) => {
+    return (
+        <div className={classes.card} id={`questionnaire-${questionnaire.id}`}>
+            <div>
+                <p className={classes.name}>{questionnaire.name}</p>
+                <p>{questionnaire.pronouns}</p>
+                <p>
+                    <span className={classes.field}>Membership Start: </span>
+                    <span>{questionnaire.startDate}</span>
+                </p>
+
+                <p>
+                    <span className={classes.field}>Role you are running for: </span>
+                    <span>{questionnaire.formation}</span>
+                </p>
+            </div>
+
+            <div className={classes.responses}>{questionnaire.data.map(({label, value}) => {
+                return (
+                    <div>
+                        <p className={classes.label}>{label}</p>
+                        <p>{value}</p>
+                    </div>
+                )
+            })}</div>
+        </div>
+    )
+}

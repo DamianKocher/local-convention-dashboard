@@ -68,7 +68,6 @@ export const membershipSlice = createSlice({
             state.login.failedCodeAttempts += 1;
         },
 
-
         setMembershipToken: (state, {payload}: PayloadAction<string | null>) => {
             if (payload) {
                 state.token = payload;

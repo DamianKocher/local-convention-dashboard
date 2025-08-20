@@ -3,20 +3,20 @@ import logo from '../../assets/logo.png';
 import {useDispatch, useSelector} from "react-redux";
 import {getFullName} from "../../membership/membershipSlice.ts";
 import {logout} from "../../app/appSaga.ts";
-import {goToFormsViewAction} from "../../forms/formsSaga.ts";
 import {Button} from "../Button/Button.tsx";
+import type {ActionCreatorWithoutPayload} from "@reduxjs/toolkit";
 
 type Props = {
-    homeButton: boolean;
+    backAction?: ActionCreatorWithoutPayload;
 }
 
-export const AppBar = ({homeButton}: Props) => {
+export const AppBar = ({backAction}: Props) => {
     const fullName = useSelector(getFullName);
     const dispatch = useDispatch();
 
     function goToHome() {
-        if (homeButton) {
-            dispatch(goToFormsViewAction());
+        if (backAction) {
+            dispatch(backAction());
         }
     }
 
@@ -28,7 +28,7 @@ export const AppBar = ({homeButton}: Props) => {
         <div className={classes.container}>
             <div className={classes.navbar}>
                 <img src={logo} alt="DSA Logo" className={classes.logo} onClick={goToHome}
-                     style={{cursor: homeButton ? 'pointer' : ''}}/>
+                     style={{cursor: backAction ? 'pointer' : ''}}/>
                 <div>
                     <p>STL DSA</p>
                     <p>Local Convention Dashboard</p>
@@ -42,7 +42,7 @@ export const AppBar = ({homeButton}: Props) => {
                 </div>}
             </div>
 
-            {homeButton && <div><Button label="Back" disabled={false} onClick={goToFormsViewAction}/></div>}
+            {backAction && <div><Button label="Back" disabled={false} onClick={backAction}/></div>}
         </div>
     )
 }

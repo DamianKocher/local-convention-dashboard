@@ -4,10 +4,12 @@ import type {RootState} from "../store/store.ts";
 export const enum View {
     INITIAL,
     LOGIN,
+    MENU,
     DOCUMENTS,
     DOCUMENT,
     FORMS,
-    FORM
+    FORM,
+    QUESTIONNAIRE
 }
 
 type AppState = {

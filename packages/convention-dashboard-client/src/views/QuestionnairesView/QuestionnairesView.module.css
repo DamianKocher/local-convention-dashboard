@@ -1,0 +1,33 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-medium)
+}
+
+.label {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-large);
+}
+
+.sublabel {
+    font-weight: var(--font-weight-semi);
+    font-size: var(--font-size-medium);
+}
+
+.tocEntry {
+    color: var(--dsa-red);
+    font-weight: var(--font-weight-medium);
+    margin-top: var(--padding-tiny);
+    cursor: pointer;
+}
+
+.questionnaires {
+    background-color: var(--dsa-white);
+    outline: var(--dsa-black) solid 1px;
+    padding: calc(var(--padding-large) * 3) var(--padding-large);
+
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--padding-large) * 3);
+    align-items: center;
+}

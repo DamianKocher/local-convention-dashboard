@@ -5,13 +5,14 @@ import {FormCard} from "../../components/FormCard/FormCard.tsx";
 import {FormType, getForms} from "../../forms/formSlice.ts";
 import {useSelector} from "react-redux";
 import {SavedFormCard} from "../../components/SavedFormCard/SavedFormCard.tsx";
+import {goToMenu} from "../../app/appSaga.ts";
 
 export const FormsView = () => {
     const forms = useSelector(getForms);
 
     return (
         <>
-            <AppBar homeButton={false}/>
+            <AppBar backAction={goToMenu}/>
 
             <div className={classes.header}>
                 <h1></h1>

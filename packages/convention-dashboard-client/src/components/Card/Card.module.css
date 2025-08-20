@@ -1,0 +1,11 @@
+.card {
+    background-color: var(--dsa-white);
+    outline: var(--dsa-black) solid 1px;
+    padding: var(--padding-small);
+
+    cursor: pointer;
+}
+
+.label {
+    user-select: none;
+}

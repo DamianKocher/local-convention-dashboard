@@ -1,0 +1,28 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-large);
+
+    max-width: 600px;
+}
+
+.name {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-medium);
+}
+
+.responses {
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-large);
+
+    text-align: justify;
+}
+
+.label {
+    font-weight: var(--font-weight-semi);
+}
+
+.field {
+    font-weight: var(--font-weight-medium);
+}

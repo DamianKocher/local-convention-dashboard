@@ -4,7 +4,7 @@ import {getSelectedDocument} from "../../document/documentSlice.ts";
 import {AppBar} from "../../components/AppBar/AppBar.tsx";
 import {useMemo} from "react";
 import {Button} from "../../components/Button/Button.tsx";
-import {signSelectedDocument, unsignSelectedDocument} from "../../document/documentSaga.ts";
+import {goToDocumentsView, signSelectedDocument, unsignSelectedDocument} from "../../document/documentSaga.ts";
 import {getShortName} from "../../membership/membershipSlice.ts";
 import Markdown from "react-markdown";
 import {Footer} from "../../components/Footer/Footer.tsx";
@@ -28,7 +28,7 @@ export const DocumentView = () => {
         signatures.sort((a, b) => a.sig.localeCompare(b.sig))
 
         return signatures;
-    }, [document]);
+    }, [document, memberShortName]);
 
     if (!document) {
         return;
@@ -36,7 +36,7 @@ export const DocumentView = () => {
 
     return (
         <>
-            <AppBar homeButton={true}/>
+            <AppBar backAction={goToDocumentsView}/>
 
             <div className={classes.container}>
                 <div>

@@ -4,7 +4,7 @@ import {useAppSelector} from "../../store/store.ts";
 import {FormType, getFormLink, getSelectedFormType, setFormLink} from "../../forms/formSlice.ts";
 import {Input} from "../../components/Input/Input.tsx";
 import {Button} from "../../components/Button/Button.tsx";
-import {submitFormAction} from "../../forms/formsSaga.ts";
+import {goToFormsViewAction, submitFormAction} from "../../forms/formsSaga.ts";
 
 import classes from "./FormView.module.css";
 
@@ -18,7 +18,7 @@ export const FormView = () => {
 
     return (
         <>
-            <AppBar homeButton={true}/>
+            <AppBar backAction={goToFormsViewAction}/>
 
             <div className={classes.form}>
                 <h1>{formType}</h1>

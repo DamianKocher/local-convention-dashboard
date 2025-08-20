@@ -10,16 +10,20 @@ import {watchMembershipSaga} from "../membership/membershipSaga.ts";
 import {watchDocumentSaga} from "../document/documentSaga.ts";
 import {watchFormsSaga} from "../forms/formsSaga.ts";
 import {formSlice} from "../forms/formSlice.ts";
+import {questionnaireSlice} from "../questionnaire/questionnaireSlice.ts";
+import {watchQuestionnairesSaga} from "../questionnaire/questionnairesSaga.ts";
 
 const rootReducer = combineSlices(
     appSlice,
     documentSlice,
     membershipSlice,
-    formSlice
+    formSlice,
+    questionnaireSlice
 );
 
 function* watchLoggingSaga() {
-    yield* takeEvery('*', function*(action) {
+    // eslint-disable-next-line require-yield
+    yield* takeEvery('*', function* (action) {
         console.log(action)
     })
 }
@@ -41,6 +45,7 @@ export function setupStore() {
     sagaMiddleware.run(watchDocumentSaga);
     sagaMiddleware.run(watchMembershipSaga);
     sagaMiddleware.run(watchFormsSaga);
+    sagaMiddleware.run(watchQuestionnairesSaga);
 
     return store;
 }

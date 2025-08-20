@@ -5,6 +5,7 @@ import {Client, Pool} from 'pg'
 import {logger} from "./utils/logger.ts";
 import {PORT} from "./utils/variables.ts";
 import {createFormRouter} from "./routers/formRouter.ts";
+import {createQuestionnaireRouter} from "./routers/questionnaireRouter.ts";
 
 (async () => {
     const app = express();
@@ -21,6 +22,9 @@ import {createFormRouter} from "./routers/formRouter.ts";
 
     const formsRouter = createFormRouter(db);
     app.use('/api/forms', formsRouter);
+
+    const questionnairesRouter = createQuestionnaireRouter(db);
+    app.use('/api/questionnaires', questionnairesRouter);
 
     app.use((err: any, req: Request, res: Response, next: NextFunction) => {
         const path = req.path;

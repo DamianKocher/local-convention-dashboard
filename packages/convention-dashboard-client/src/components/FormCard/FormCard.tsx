@@ -17,8 +17,6 @@ export const FormCard = ({formType}: Props) => {
     return (
         <div className={classes.container} onClick={onClick}>
             <p>{formType}</p>
-
-
         </div>
     );
 };

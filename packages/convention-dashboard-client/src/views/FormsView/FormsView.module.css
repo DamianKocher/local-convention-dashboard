@@ -1,12 +1,12 @@
 .header {
     display: flex;
     flex-direction: column;
-    gap: var(--padding-medium);
+    gap: var(--padding-small);
 }
 
 .forms {
     margin-top: var(--padding-large);
     display: flex;
     flex-direction: column;
-    gap: var(--padding-medium);
+    gap: var(--padding-small);
 }
