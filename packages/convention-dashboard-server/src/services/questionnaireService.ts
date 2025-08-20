@@ -10,7 +10,7 @@ export class QuestionnaireService {
     }
 
     async getQuestionnaires() {
-        const result = await this.client.query('SELECT * FROM questionnaires');
+        const result = await this.client.query('SELECT * FROM questionnaires ORDER BY formation, name');
         return questionnaireResponseSchema.parse(result.rows.map((questionnaire) => ({
             id: questionnaire.id,
             name: questionnaire.name,
