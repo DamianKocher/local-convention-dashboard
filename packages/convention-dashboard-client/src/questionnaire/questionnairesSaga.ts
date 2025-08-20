@@ -9,9 +9,10 @@ export const {
     s: goToQuestionnairesSaga
 } = createSaga('questionnaires/goToQuestionnaires', function* () {
     try {
+        yield* put(setView(View.QUESTIONNAIRE));
+
         const questionnaires = yield* loadQuestionnaires();
         yield* put(setQuestionnaires(questionnaires));
-        yield* put(setView(View.QUESTIONNAIRE));
     } catch (e) {
         console.error(e)
         yield* put(setView(View.MENU));

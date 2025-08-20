@@ -3,6 +3,7 @@ import {goToFormsViewAction} from "../../forms/formsSaga.ts";
 import {Card} from "../../components/Card/Card.tsx";
 import classes from "./MenuView.module.css"
 import {goToQuestionnaires} from "../../questionnaire/questionnairesSaga.ts";
+import {Footer} from "../../components/Footer/Footer.tsx";
 
 export const MenuView = () => {
     return (
@@ -14,6 +15,8 @@ export const MenuView = () => {
                 <Card label="View 2025-2026 formation officer questionnaires." onClick={goToQuestionnaires}/>
                 {/*<Card label="View resolutions." onClick={goToDocumentsView} />*/}
             </div>
+
+            <Footer/>
         </>
     )
 }

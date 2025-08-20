@@ -4,6 +4,7 @@ import {useSelector} from "react-redux";
 import {getQuestionnaires} from "../../questionnaire/questionnaireSlice.ts";
 import {QuestionnaireCard} from "../../components/QuestionnaireCard/QuestionnaireCard.tsx";
 import classes from "./QuestionnairesView.module.css";
+import {Footer} from "../../components/Footer/Footer.tsx";
 
 export const QuestionnairesView = () => {
     const questionnaires = useSelector(getQuestionnaires);
@@ -43,6 +44,8 @@ export const QuestionnairesView = () => {
                     )}
                 </div>
             </div>
+
+            <Footer/>
         </>
     )
 }
