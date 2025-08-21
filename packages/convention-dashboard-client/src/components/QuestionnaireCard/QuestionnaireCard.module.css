@@ -1,3 +1,13 @@
+.wrapper {
+    background-color: var(--dsa-white);
+    outline: var(--dsa-black) solid 1px;
+    padding: calc(var(--padding-large) * 3) var(--padding-large);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .card {
     display: flex;
     flex-direction: column;

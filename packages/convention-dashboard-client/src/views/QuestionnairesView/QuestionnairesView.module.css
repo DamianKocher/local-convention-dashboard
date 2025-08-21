@@ -1,7 +1,7 @@
 .wrapper {
     display: flex;
     flex-direction: column;
-    gap: var(--padding-medium)
+    gap: var(--padding-large)
 }
 
 .label {
@@ -22,12 +22,7 @@
 }
 
 .questionnaires {
-    background-color: var(--dsa-white);
-    outline: var(--dsa-black) solid 1px;
-    padding: calc(var(--padding-large) * 3) var(--padding-large);
-
     display: flex;
     flex-direction: column;
-    gap: calc(var(--padding-large) * 3);
-    align-items: center;
+    gap: calc(var(--padding-large) * 2);
 }
