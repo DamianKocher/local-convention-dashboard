@@ -51,7 +51,7 @@ export const DocumentView = () => {
                     </div>
 
                     <div>
-                        <h2>Signatures</h2>
+                        <h2>Co-Signers</h2>
 
                         <p>{document.signatures.count.current} / {document.signatures.count.required}</p>
 
@@ -75,6 +75,18 @@ export const DocumentView = () => {
 
                 {markdown && <div className={classes.section}>
                     <div className={classes.content}>
+                        <h1 className={classes.contentTitle}>{document.name}</h1>
+
+                        <div>
+                            <h2>Authors</h2>
+                            <p>{document.coauthors.join(', ')}</p>
+                        </div>
+
+                        <div>
+                            <h2>Co-Signers</h2>
+                            <p>{signaturesIncludingUser.map((signature) => signature.sig).join(', ') || 'None.'}</p>
+                        </div>
+
                         <Markdown>{markdown}</Markdown>
                     </div>
                 </div>}
