@@ -93,7 +93,17 @@ export class EmailService {
 
         sendgrid.setApiKey(this.sendgridToken)
 
-        await sendgrid.send(params);
+        await sendgrid.send({
+            ...params, trackingSettings: {
+                clickTracking: {
+                    enable: false,
+                    enableText: false
+                },
+                openTracking: {
+                    enable: false,
+                },
+            }
+        });
         logger.info(`sent email to ${params.to} with subject "${params.subject}"`);
     }
 }
