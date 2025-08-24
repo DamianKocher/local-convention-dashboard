@@ -1,7 +1,4 @@
-import { pino, type Logger } from 'pino';
+import {pino, type Logger} from 'pino';
 
-export const logger = pino(
-    {
-
-    }
-);
+export const logger = pino({
+});

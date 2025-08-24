@@ -1,17 +1,17 @@
-import classes from "./Card.module.css";
-import type {ActionCreatorWithoutPayload} from "@reduxjs/toolkit";
+import classes from "./ButtonCard.module.css";
+import type {Action} from "@reduxjs/toolkit";
 import {useDispatch} from "react-redux";
 
 type Props = {
     label: string;
-    onClick: ActionCreatorWithoutPayload;
+    action: Action;
 }
 
-export const Card = ({label, onClick}: Props) => {
+export const ButtonCard = ({label, action}: Props) => {
     const dispatch = useDispatch();
 
     function handleClick() {
-        dispatch(onClick());
+        dispatch(action);
     }
 
     return (

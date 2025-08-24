@@ -56,6 +56,10 @@ export class AuthorizationService {
     }
 
     getMemberFullName(req: any) {
-        return z.string().parse(req[AuthorizationService.REQ_FULL_NAME]);
+        return z.string().parse(this.getMemberFullNameNullable(req));
+    }
+
+    getMemberFullNameNullable(req: any) {
+        return req[AuthorizationService.REQ_FULL_NAME] ?? null;
     }
 }

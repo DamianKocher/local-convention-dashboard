@@ -14,7 +14,7 @@ export const QuestionnairesView = () => {
             <AppBar backAction={goToMenu}/>
 
             <div className={classes.wrapper}>
-                <p className={classes.label}>2025-2026 STL DSA Formation Officer Questionnaires</p>
+                <h1>2025-2026 STL DSA Formation Officer Questionnaires</h1>
 
                 <div>
                     <p className={classes.sublabel}>Table of Content</p>
@@ -27,8 +27,10 @@ export const QuestionnairesView = () => {
                             }
 
                             return (
-                                <p className={classes.tocEntry}
-                                   onClick={onClick}
+                                <p
+                                    key={questionnaire.id}
+                                    className={classes.tocEntry}
+                                    onClick={onClick}
                                 >
                                     {questionnaire.formation} • {questionnaire.name} ({questionnaire.pronouns})
                                 </p>
@@ -40,7 +42,7 @@ export const QuestionnairesView = () => {
 
                 <div className={classes.questionnaires}>
                     {questionnaires.map((questionnaire) =>
-                        <QuestionnaireCard questionnaire={questionnaire}/>
+                        <QuestionnaireCard key={questionnaire.id} questionnaire={questionnaire}/>
                     )}
                 </div>
             </div>

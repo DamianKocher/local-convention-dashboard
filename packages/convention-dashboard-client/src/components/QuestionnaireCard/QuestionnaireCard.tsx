@@ -7,8 +7,8 @@ type Props = {
 
 export const QuestionnaireCard = ({questionnaire}: Props) => {
     return (
-        <div className={classes.wrapper}>
-            <div className={classes.card} id={`questionnaire-${questionnaire.id}`}>
+        <div className={classes.wrapper} id={`questionnaire-${questionnaire.id}`}>
+            <div className={classes.card}>
                 <div>
                     <p className={classes.name}>{questionnaire.name}</p>
                     <p>{questionnaire.pronouns}</p>
@@ -23,9 +23,9 @@ export const QuestionnaireCard = ({questionnaire}: Props) => {
                     </p>
                 </div>
 
-                <div className={classes.responses}>{questionnaire.data.map(({label, value}) => {
+                <div className={classes.responses}>{questionnaire.data.map(({label, value}, i) => {
                     return (
-                        <div>
+                        <div key={i}>
                             <p className={classes.label}>{label}</p>
                             <p>{value}</p>
                         </div>

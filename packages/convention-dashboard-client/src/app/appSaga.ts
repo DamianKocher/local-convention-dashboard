@@ -1,14 +1,23 @@
 import {createSaga} from "../utils/saga.ts";
-import {put, takeEvery, takeLatest} from "typed-redux-saga";
+import {all, put, takeEvery, takeLatest} from "typed-redux-saga";
 import {clearToken, loadToken} from "../utils/tokenStore.ts";
 import {resetLoginState, setMembershipToken} from "../membership/membershipSlice.ts";
 import {setView, View} from "./appSlice.ts";
+import {fetchQuestionnaires} from "../questionnaire/questionnairesSaga.ts";
+import {fetchDocuments} from "../document/documentSaga.ts";
+import {loadForms} from "../forms/formsSaga.ts";
 
 export const {a: initializeApp, s: initializeAppSaga} = createSaga('app/initialize', function* () {
     const token = loadToken();
     if (token) {
         yield* put(setMembershipToken(token));
         yield* put(setView(View.MENU));
+
+        try {
+            yield* all([fetchQuestionnaires(), fetchDocuments(), loadForms()]);
+        } catch (e) {
+            console.error('failed to preload data', e);
+        }
     } else {
         yield* put(setView(View.LOGIN));
     }

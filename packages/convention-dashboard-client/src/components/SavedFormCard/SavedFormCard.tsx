@@ -1,6 +1,7 @@
 import classes from "./SavedFormCard.module.css";
 import {useDispatch} from "react-redux";
 import {deleteFormAction} from "../../forms/formsSaga.ts";
+import {Link} from "../Link/Link.tsx";
 
 type Props = {
     id: number;
@@ -17,11 +18,11 @@ export const SavedFormCard = ({id, type, link}: Props) => {
 
     return (
         <div className={classes.form}>
-            <p>{type}</p>
+            <h3>{type}</h3>
 
             <p className={classes.delete} onClick={deleteForm}>Delete</p>
 
-            <p><a href={link} target="_blank">{link}</a></p>
+            <Link url={link}>{link}</Link>
         </div>
     )
 }

@@ -4,17 +4,20 @@ import {put, takeLatest} from "typed-redux-saga";
 import {setQuestionnaires} from "./questionnaireSlice.ts";
 import {loadQuestionnaires} from "./questionnaireApi.ts";
 
+export function* fetchQuestionnaires() {
+    const questionnaires = yield* loadQuestionnaires();
+    yield* put(setQuestionnaires(questionnaires));
+}
+
 export const {
     a: goToQuestionnaires,
     s: goToQuestionnairesSaga
 } = createSaga('questionnaires/goToQuestionnaires', function* () {
     try {
         yield* put(setView(View.QUESTIONNAIRE));
-
-        const questionnaires = yield* loadQuestionnaires();
-        yield* put(setQuestionnaires(questionnaires));
+        yield* fetchQuestionnaires();
     } catch (e) {
-        console.error(e)
+        console.error(e);
         yield* put(setView(View.MENU));
     }
 })

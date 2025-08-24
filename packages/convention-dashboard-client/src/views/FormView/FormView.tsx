@@ -4,9 +4,10 @@ import {useAppSelector} from "../../store/store.ts";
 import {FormType, getFormLink, getSelectedFormType, setFormLink} from "../../forms/formSlice.ts";
 import {Input} from "../../components/Input/Input.tsx";
 import {Button} from "../../components/Button/Button.tsx";
-import {goToFormsViewAction, submitFormAction} from "../../forms/formsSaga.ts";
+import {submitFormAction} from "../../forms/formsSaga.ts";
 
 import classes from "./FormView.module.css";
+import {goToMenu} from "../../app/appSaga.ts";
 
 const FUCKED_UP_URL_REGEX = new RegExp('https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)');
 
@@ -18,7 +19,7 @@ export const FormView = () => {
 
     return (
         <>
-            <AppBar backAction={goToFormsViewAction}/>
+            <AppBar backAction={goToMenu}/>
 
             <div className={classes.form}>
                 <h1>{formType}</h1>

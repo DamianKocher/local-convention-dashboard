@@ -4,14 +4,19 @@ import {setView, View} from "../app/appSlice.ts";
 import {type FormType, getFormLink, getSelectedFormType, initializeFormView, setForms} from "./formSlice.ts";
 import {createForm, deleteForm, getForms} from "./formsApi.ts";
 
+export function* loadForms() {
+    const forms = yield* getForms();
+    yield* put(setForms(forms))
+}
+
 export const {a: goToFormsViewAction, s: goToFormsViewSaga} = createSaga('forms/goToFormsView', function* () {
     yield* put(setView(View.FORMS));
 
     try {
-        const forms = yield* getForms();
-        yield* put(setForms(forms))
+        yield* loadForms();
     } catch (e) {
         console.error(e);
+        yield* put(setView(View.MENU));
     }
 });
 
@@ -37,7 +42,6 @@ export const {a: submitFormAction, s: submitFormSaga} = createSaga('forms/submit
 
 export const {a: deleteFormAction, s: deleteFormSaga} = createSaga<number>('forms/deleteForm', function* ({payload}) {
     try {
-        console.log(payload);
         yield* deleteForm(payload);
 
         const forms = yield* getForms();

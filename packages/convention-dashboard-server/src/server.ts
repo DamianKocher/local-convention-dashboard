@@ -6,6 +6,7 @@ import {logger} from "./utils/logger.ts";
 import {PORT} from "./utils/variables.ts";
 import {createFormRouter} from "./routers/formRouter.ts";
 import {createQuestionnaireRouter} from "./routers/questionnaireRouter.ts";
+import {AuthorizationService} from "./services/authorizationService.ts";
 
 (async () => {
     const app = express();
@@ -13,6 +14,15 @@ import {createQuestionnaireRouter} from "./routers/questionnaireRouter.ts";
 
     const db = new Client();
     await db.connect();
+
+    const authorizationService = new AuthorizationService();
+    app.use((req: Request, res: Response, next: NextFunction) => {
+        next();
+
+        const user = authorizationService.getMemberFullNameNullable(req) ?? '???';
+        const userAgent = req.headers['user-agent'] ?? '???';
+        logger.info(`${req.method} ${req.path} - ${res.statusCode} [user: ${user}, user agent: ${userAgent}]`);
+    });
 
     const membershipRouter = createMembershipRouter(db);
     app.use('/api/membership', membershipRouter);

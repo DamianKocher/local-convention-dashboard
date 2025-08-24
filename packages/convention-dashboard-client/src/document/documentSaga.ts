@@ -13,13 +13,16 @@ import {
 
 type FetchDocumentData = { id: number; reload: boolean };
 
+export function* fetchDocuments() {
+    const documents = yield* getAllDocuments();
+    yield* put(setDocuments(documents));
+}
+
 export const {a: goToDocumentsView, s: goToDocumentsViewSaga} = createSaga('document/goToDocumentsView', function* () {
     try {
         yield* put(setSelectedDocumentId(null));
         yield* put(setView(View.DOCUMENTS));
-
-        const documents = yield* getAllDocuments();
-        yield* put(setDocuments(documents));
+        yield* fetchDocuments();
     } catch (e) {
         console.error(e);
     }
