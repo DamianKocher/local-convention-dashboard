@@ -9,6 +9,7 @@ import {getShortName} from "../../membership/membershipSlice.ts";
 import Markdown from "react-markdown";
 import {Footer} from "../../components/Footer/Footer.tsx";
 import {DocumentList} from "../../components/DocumentList/DocumentList.tsx";
+import {Link} from "../../components/Link/Link.tsx";
 
 export const DocumentView = () => {
     const {document, markdown, related} = useSelector(getSelectedDocument);
@@ -87,7 +88,9 @@ export const DocumentView = () => {
                             <p>{signaturesIncludingUser.map((signature) => signature.sig).join(', ') || 'None.'}</p>
                         </div>
 
-                        <Markdown>{markdown}</Markdown>
+                        <Markdown components={{
+                            a: ({children, href}) => <Link url={href}>{children}</Link>
+                        }}>{markdown}</Markdown>
                     </div>
                 </div>}
 

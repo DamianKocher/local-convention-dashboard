@@ -1,6 +1,8 @@
+import type {ReactNode} from "react";
+
 type Props = {
-    url: string
-    children: React.ReactNode
+    url: string | undefined;
+    children: ReactNode
 }
 
 export const Link = ({url, children}: Props) => {

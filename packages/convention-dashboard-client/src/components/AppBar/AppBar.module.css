@@ -33,4 +33,5 @@
 
 .signout:hover {
     text-decoration: underline;
+    cursor: pointer;
 }

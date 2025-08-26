@@ -31,7 +31,7 @@ export const LoginStages = () => {
                     <p>If you have not received a verification code, you might not be might a member in good
                         standing. Please reach out to info@stldsa.org to resolve.</p>
 
-                    <p>Verification email was sent to: {email}</p>
+                    <p>Email: {email}</p>
 
                     {failedCodeAttempts > 0 && <p>Failed code verification attempts: {failedCodeAttempts}</p>}
 

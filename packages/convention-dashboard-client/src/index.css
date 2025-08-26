@@ -97,6 +97,19 @@ p {
     margin: 0;
 }
 
+a, a:visited {
+    color: var(--dsa-red-tint-1);
+}
+
+a:hover {
+    color: var(--dsa-red);
+}
+
+*::selection {
+    background: var(--dsa-red-tint-3);
+    color: var(--dsa-white);
+}
+
 #wrapper {
     display: flex;
     justify-content: center;
