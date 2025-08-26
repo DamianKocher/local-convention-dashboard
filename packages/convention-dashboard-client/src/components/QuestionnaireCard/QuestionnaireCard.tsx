@@ -10,7 +10,7 @@ export const QuestionnaireCard = ({questionnaire}: Props) => {
         <div className={classes.wrapper} id={`questionnaire-${questionnaire.id}`}>
             <div className={classes.card}>
                 <div>
-                    <p className={classes.name}>{questionnaire.name}</p>
+                    <h2>{questionnaire.name}</h2>
                     <p>{questionnaire.pronouns}</p>
                     <p>
                         <span className={classes.field}>Membership Start: </span>
