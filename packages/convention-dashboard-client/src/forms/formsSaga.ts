@@ -3,6 +3,7 @@ import {put, select, takeLatest} from "typed-redux-saga";
 import {setView, View} from "../app/appSlice.ts";
 import {type FormType, getFormLink, getSelectedFormType, initializeFormView, setForms} from "./formSlice.ts";
 import {createForm, deleteForm, getForms} from "./formsApi.ts";
+import {goToMenu} from "../app/appSaga.ts";
 
 export function* loadForms() {
     const forms = yield* getForms();
@@ -16,7 +17,7 @@ export const {a: goToFormsViewAction, s: goToFormsViewSaga} = createSaga('forms/
         yield* loadForms();
     } catch (e) {
         console.error(e);
-        yield* put(setView(View.MENU));
+        yield* put(goToMenu());
     }
 });
 

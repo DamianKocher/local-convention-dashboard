@@ -32,15 +32,15 @@ export const {
     a: goToDocumentView,
     s: goToDocumentViewSaga
 } = createSaga<number>('document/goToDocumentView', function* ({payload}) {
-    yield* put(loadDocumentMarkdown({id: payload, reload: true}));
-
-    yield* put(setSelectedDocumentId(payload));
-    yield* put(setView(View.DOCUMENT));
-
     try {
+        yield* put(setSelectedDocumentId(payload));
+        yield* put(setView(View.DOCUMENT));
+
+        yield* put(loadDocumentMarkdown({id: payload, reload: true}));
         const document = yield* getDocument(payload);
         yield* put(setDocument(document));
     } catch (e) {
+        yield* put(goToDocumentsView());
         console.error(e);
     }
 });
@@ -119,9 +119,17 @@ export const {
         const markdown = yield* getDocumentMarkdown(id);
         yield* put(setDocumentMarkdown({id: id, markdown: markdown.markdown}));
     } catch (e) {
-
+        console.error(e);
     }
 });
+
+function onSetSelectedDocumentId({payload}: ReturnType<typeof setSelectedDocumentId>) {
+    if (payload != null) {
+        window.history.pushState(null, '', `/?document=${payload}`);
+    } else {
+        window.history.pushState(null, '', `/`);
+    }
+}
 
 export function* watchDocumentSaga() {
     yield* takeLatest(goToDocumentsView.type, goToDocumentsViewSaga);
@@ -130,4 +138,5 @@ export function* watchDocumentSaga() {
     yield* takeEvery(preloadDocument.type, preloadDocumentSaga);
     yield* takeLatest(signSelectedDocument.type, signSelectedDocumentSaga);
     yield* takeLatest(unsignSelectedDocument.type, unsignSelectedDocumentSaga);
+    yield* takeLatest(setSelectedDocumentId.type, onSetSelectedDocumentId);
 }
