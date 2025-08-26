@@ -38,7 +38,7 @@ export const DocumentCard = ({document}: Props) => {
             </div>
 
             <div className={classes.secondarySection}>
-                <p className={classes.secondaryLabel}>Co-Signers</p>
+                <p className={classes.secondaryLabel}>Signatures</p>
                 <p>{String(document.signatures.count.current)} / {String(document.signatures.count.required)}</p>
             </div>
         </div>

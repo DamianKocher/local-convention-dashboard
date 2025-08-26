@@ -52,7 +52,7 @@ export const DocumentView = () => {
                     </div>
 
                     <div>
-                        <h2>Co-Signers</h2>
+                        <h2>Signatures</h2>
 
                         <p>{document.signatures.count.current} / {document.signatures.count.required}</p>
 
