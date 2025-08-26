@@ -31,7 +31,7 @@ export const AppBar = ({backAction}: Props) => {
                      style={{cursor: backAction ? 'pointer' : ''}}/>
                 <div>
                     <p>STL DSA</p>
-                    <p>Local Convention Dashboard</p>
+                    <p>Local Convention Hub</p>
                 </div>
 
                 {fullName && <div className={classes.user}>

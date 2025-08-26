@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@sendgrid/mail": "^8.1.5",
+    "@slack/web-api": "^7.10.0",
     "convention-dashboard-shared": "file:../convention-dashboard-shared",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",

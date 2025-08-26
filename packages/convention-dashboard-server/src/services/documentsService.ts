@@ -17,7 +17,7 @@ export class DocumentsService {
         return this.fetchDocuments(memberId);
     }
 
-    async getDocumentById(id: number, memberId: number): Promise<Document> {
+    async getDocumentById(id: number, memberId?: number): Promise<Document> {
         const documents = await this.fetchDocuments(memberId, id);
         if (documents.length === 0) {
             throw new Error(`Document with ID ${id} not found`);
@@ -25,7 +25,7 @@ export class DocumentsService {
         return documents[0];
     }
 
-    private async fetchDocuments(memberId: number, documentId?: number): Promise<Document[]> {
+    private async fetchDocuments(memberId?: number, documentId?: number): Promise<Document[]> {
         logger.info(`Fetching documents for member ID ${memberId} with document ID ${documentId}`);
 
         const query = `

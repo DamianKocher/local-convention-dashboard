@@ -8,6 +8,7 @@ import {submitFormAction} from "../../forms/formsSaga.ts";
 
 import classes from "./FormView.module.css";
 import {goToMenu} from "../../app/appSaga.ts";
+import {Link} from "../../components/Link/Link.tsx";
 
 const FUCKED_UP_URL_REGEX = new RegExp('https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)');
 
@@ -33,11 +34,17 @@ export const FormView = () => {
                             you have any questions or concerns, please reach out to the EC at
                             saintlouisdsa@gmail.com.</p>
 
-                        {formType === FormType.EC &&
-                            <a href="https://link.stldsa.org/ec_questionnaire" target="_blank">EC Questionnaire.</a>}
-                        {formType === FormType.FORMATION &&
-                            <a href="https://link.stldsa.org/formation_leader_questionnaire" target="_blank">Formation
-                                Officer Questionnaire.</a>}
+                        <p>
+                            {formType === FormType.EC &&
+                                <Link url="https://link.stldsa.org/ec_questionnaire">EC Questionnaire</Link>}
+                            {formType === FormType.FORMATION &&
+                                <Link url="https://link.stldsa.org/formation_leader_questionnaire">Formation
+                                    Officer Questionnaire</Link>}
+                        </p>
+
+
+                        <p><Link url="https://link.stldsa.org/2025-convention-nomination-form">Submit Your Officer
+                            Self-Nomination Form</Link></p>
                     </>
                 )}
 

@@ -11,3 +11,5 @@ export const GENERIC_SENDER_EMAIL = process.env.LC_VERIFICATION_SENDER_EMAIL ?? 
 export const GENERIC_SENDER_NAME = process.env.LC_VERIFICATION_SENDER_NAME ?? 'Local Convention Dashboard';
 
 export const SENDGRID_TOKEN = process.env.LC_SENDGRID_TOKEN ?? '';
+
+export const SLACK_TOKEN = process.env.LC_SLACK_TOKEN ?? '';

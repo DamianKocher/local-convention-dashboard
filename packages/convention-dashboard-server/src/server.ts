@@ -7,6 +7,7 @@ import {PORT} from "./utils/variables.ts";
 import {createFormRouter} from "./routers/formRouter.ts";
 import {createQuestionnaireRouter} from "./routers/questionnaireRouter.ts";
 import {AuthorizationService} from "./services/authorizationService.ts";
+import {createSlackRouter} from "./routers/slackRouter.ts";
 
 (async () => {
     const app = express();
@@ -35,6 +36,9 @@ import {AuthorizationService} from "./services/authorizationService.ts";
 
     const questionnairesRouter = createQuestionnaireRouter(db);
     app.use('/api/questionnaires', questionnairesRouter);
+
+    const slackRouter = createSlackRouter(db);
+    app.use('/api/slack', slackRouter);
 
     app.use((err: any, req: Request, res: Response, next: NextFunction) => {
         const path = req.path;
