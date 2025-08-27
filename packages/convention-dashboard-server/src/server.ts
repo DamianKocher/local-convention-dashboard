@@ -18,7 +18,9 @@ import {createSlackRouter} from "./routers/slackRouter.ts";
 
     const authorizationService = new AuthorizationService();
     app.use((req: Request, res: Response, next: NextFunction) => {
+        res.setHeader('X-Request-Start', Date.now().toString());
         next();
+        res.setHeader('X-Request-End', Date.now().toString());
 
         const user = authorizationService.getMemberFullNameNullable(req) ?? '???';
         const userAgent = req.headers['user-agent'] ?? '???';
