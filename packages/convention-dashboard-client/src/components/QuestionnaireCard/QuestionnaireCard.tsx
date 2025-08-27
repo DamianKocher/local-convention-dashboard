@@ -1,5 +1,7 @@
 import type {Questionnaire} from "convention-dashboard-shared/src";
 import classes from "./QuestionnaireCard.module.css";
+import Markdown from "react-markdown";
+import {Link} from "../Link/Link.tsx";
 
 type Props = {
     questionnaire: Questionnaire
@@ -27,7 +29,11 @@ export const QuestionnaireCard = ({questionnaire}: Props) => {
                     return (
                         <div key={i}>
                             <p className={classes.label}>{label}</p>
-                            <p>{value}</p>
+                            <div className={classes.value}>
+                                <Markdown components={{
+                                    a: ({children, href}) => <Link url={href}>{children}</Link>
+                                }}>{value}</Markdown>
+                            </div>
                         </div>
                     )
                 })}</div>
