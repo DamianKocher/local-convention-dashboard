@@ -6,6 +6,10 @@
     gap: var(--padding-large);
 }
 
+.signature {
+    margin-top: var(--padding-large);
+}
+
 .content {
     color: var(--dsa-black);
     background-color: var(--dsa-white);
