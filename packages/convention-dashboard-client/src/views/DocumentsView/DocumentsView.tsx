@@ -14,17 +14,15 @@ export const DocumentsView = () => {
             <AppBar backAction={goToMenu}/>
 
             <div className={classes.container}>
-                <div>
-                    <h1>Resolutions</h1>
-                    <DocumentList documents={resolutions}/>
-                </div>
-
-
                 {amendments.length > 0 && <div>
                     <h1>Amendments</h1>
                     <DocumentList documents={amendments}/>
                 </div>}
 
+                <div>
+                    <h1>Resolutions</h1>
+                    <DocumentList documents={resolutions}/>
+                </div>
             </div>
 
             <Footer/>

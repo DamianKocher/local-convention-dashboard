@@ -32,6 +32,7 @@ export class DocumentsService {
             SELECT d.id,
                    d.name,
                    d.description,
+                   d.frozen,
                    d.type,
                    d.co_authors,
                    d.signatures_required,
@@ -44,7 +45,7 @@ export class DocumentsService {
                      LEFT JOIN signatures s ON d.id = s.document_id
                      LEFT JOIN members m ON s.member_id = m.id AND m.id != $1
                      LEFT JOIN documents r ON r.relates_to = d.id
-            WHERE ($2::integer IS NULL OR d.id = $2::integer)
+            WHERE ($2::integer IS NULL OR d.id = $2::integer) AND d.hidden = false
             GROUP BY d.id, d.name
             ORDER BY d.name, d.id
         `;
@@ -71,6 +72,7 @@ export class DocumentsService {
                     name: row.name,
                     description: row.description,
                     coauthors: row.co_authors.split(','),
+                    frozen: row.frozen,
 
                     type: row.type,
 
@@ -106,16 +108,25 @@ export class DocumentsService {
     }
 
     async signDocument(id: number, memberId: number) {
+        await this.verifyDocumentIsNotFrozen(id);
         const query = 'INSERT INTO signatures (document_id, member_id) VALUES ($1, $2)';
         await this.client.query(query, [id, memberId]);
     }
 
     async unsignDocument(id: number, memberId: number) {
+        await this.verifyDocumentIsNotFrozen(id);
         const query = 'DELETE FROM signatures WHERE document_id = $1 AND member_id = $2';
         const result = await this.client.query(query, [id, memberId]);
 
         if (result.rowCount === 0) {
             throw new Error(`No signature found for document ID ${id} by member ID ${memberId}`);
+        }
+    }
+
+    private async verifyDocumentIsNotFrozen(id: number) {
+        const document = await this.getDocumentById(id);
+        if (document.frozen) {
+            throw new Error(`document ${document.name} is frozen`);
         }
     }
 }

@@ -8,6 +8,7 @@ export const DocumentSchema = z.object({
     name: z.string(),
     description: z.string(),
     coauthors: z.array(z.string()),
+    frozen: z.boolean().default(false),
 
     type: DocumentType,
 

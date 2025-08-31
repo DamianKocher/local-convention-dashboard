@@ -14,7 +14,7 @@ export const QuestionnairesView = () => {
             <AppBar backAction={goToMenu}/>
 
             <div className={classes.wrapper}>
-                <h1>2025-2026 STL DSA Formation Officer Questionnaires</h1>
+                <h1>Executive Committee & Formation Officer Questionnaires</h1>
 
                 <div>
                     <p className={classes.sublabel}>Table of Content</p>

@@ -56,15 +56,14 @@ export const DocumentView = () => {
 
                         <p>{document.signatures.count.current} / {document.signatures.count.required}</p>
 
-                        <ul>
-                            {signaturesIncludingUser.map((signature) => <li
-                                key={signature.sig}>{signature.sig}</li>)}
-                        </ul>
-
-                        {document.signatures.signed ?
-                            <Button label="Remove My Signature" disabled={false} onClick={unsignSelectedDocument}/> :
-                            <Button label="Add My Signature" disabled={false} onClick={signSelectedDocument}/>}
-
+                        {!document.frozen && <div>
+                            {document.signatures.signed ?
+                                <Button label="Remove My Signature" disabled={false}
+                                        onClick={unsignSelectedDocument}/> :
+                                <Button label="Add My Signature" disabled={false}
+                                        onClick={signSelectedDocument}/>
+                            }
+                        </div>}
                     </div>
 
                 </div>

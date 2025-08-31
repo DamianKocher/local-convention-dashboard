@@ -28,7 +28,7 @@ export const QuestionnaireCard = ({questionnaire}: Props) => {
                 <div className={classes.responses}>{questionnaire.data.map(({label, value}, i) => {
                     return (
                         <div key={i}>
-                            <p className={classes.label}>{label}</p>
+                            <h3>{label}</h3>
                             <div className={classes.value}>
                                 <Markdown components={{
                                     a: ({children, href}) => <Link url={href}>{children}</Link>

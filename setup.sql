@@ -62,6 +62,9 @@ ALTER TABLE questionnaires
 ALTER TABLE documents
     ADD COLUMN frozen BOOLEAN DEFAULT FALSE NOT NULL;
 
+ALTER TABLE documents
+    ADD COLUMN hidden BOOLEAN DEFAULT FALSE NOT NULL;
+
 CREATE INDEX idx_verifications_email ON verifications (email);
 CREATE INDEX idx_signatures_member_id ON signatures (member_id);
 CREATE INDEX idx_signatures_document_id ON signatures (document_id);

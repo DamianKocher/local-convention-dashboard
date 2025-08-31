@@ -27,7 +27,7 @@ export class SlackService {
             channel: channelId,
             unfurl_links: false,
             unfurl_media: false,
-            text: `Resolution Discussion - ${document.name}`,
+            text: document.name,
             blocks: [
                 {
                     "type": "header",
@@ -55,7 +55,7 @@ export class SlackService {
                     "type": "section",
                     "text": {
                         "type": "mrkdwn",
-                        "text": `View and sign the resolution on the :globe_with_meridians: *<https://convention.stldsa.org/?document=${document.id}|Local Convention Hub>*. Discuss the resolution here.`
+                        "text": `View and sign the ${document.type} on the :globe_with_meridians: *<https://convention.stldsa.org/?document=${document.id}|Local Convention Hub>*. Discuss the ${document.type} here.`
                     }
                 },
             ]
