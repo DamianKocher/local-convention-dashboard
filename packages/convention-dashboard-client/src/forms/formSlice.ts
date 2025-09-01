@@ -4,9 +4,7 @@ import type {RootState} from "../store/store.ts";
 import type {SavedForm} from "convention-dashboard-shared/src/forms";
 
 export const enum FormType {
-    EC = "Executive Committee Questionnaire",
-    FORMATION = "Formation Co-Chair Questionnaire",
-    RESOLUTION = "Resolution"
+    AMENDMENT = "Amendment",
 }
 
 type FormState = {
@@ -18,7 +16,7 @@ type FormState = {
 const initialState: FormState = {
     forms: [],
 
-    selectedFormType: FormType.EC,
+    selectedFormType: FormType.AMENDMENT,
     link: ''
 };
 
@@ -42,10 +40,11 @@ export const formSlice = createSlice({
     selectors: {
         getSelectedFormType: (state: FormState) => state.selectedFormType,
         getFormLink: (state: FormState) => state.link,
-        getForms: (state: FormState) => state.forms
+        getForms: (state: FormState) => state.forms,
+        getHasForms: (state: FormState) => state.forms.length > 0,
     }
 });
 
 export const {initializeFormView, setFormLink, setForms} = formSlice.actions;
 
-export const {getSelectedFormType, getFormLink, getForms} = formSlice.getSelectors((state: RootState) => state.form);
+export const {getSelectedFormType, getFormLink, getForms, getHasForms} = formSlice.getSelectors((state: RootState) => state.form);
