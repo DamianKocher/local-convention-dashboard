@@ -9,7 +9,7 @@ import {getShortName} from "../../membership/membershipSlice.ts";
 import Markdown from "react-markdown";
 import {Footer} from "../../components/Footer/Footer.tsx";
 import {DocumentList} from "../../components/DocumentList/DocumentList.tsx";
-import {Link} from "../../components/Link/Link.tsx";
+import {MarkdownLink} from "../../components/MarkdownLink/MarkdownLink.tsx";
 
 export const DocumentView = () => {
     const {document, markdown, related} = useSelector(getSelectedDocument);
@@ -88,7 +88,7 @@ export const DocumentView = () => {
                         </div>
 
                         <Markdown components={{
-                            a: ({children, href}) => <Link url={href}>{children}</Link>
+                            a: ({children, href}) => <MarkdownLink href={href}>{children}</MarkdownLink>
                         }}>{markdown}</Markdown>
                     </div>
                 </div>}

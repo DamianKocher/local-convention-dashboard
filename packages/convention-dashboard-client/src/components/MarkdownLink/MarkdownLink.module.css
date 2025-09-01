@@ -1,0 +1,11 @@
+.addition {
+    color: #228B22;
+    font-weight: var(--font-weight-semi);
+}
+
+.strike {
+    color: var(--dsa-red);
+    font-weight: var(--font-weight-bold);
+
+    text-decoration: line-through;
+}
